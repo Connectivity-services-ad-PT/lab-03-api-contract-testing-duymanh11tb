@@ -3,4 +3,11 @@ node_modules/
 .env
 reports/*.xml
 reports/*.html
+reports/*.json
+!reports/.gitkeep
+!reports/newman-report.xml
+!reports/newman-report.html
+!reports/contract-lint-report.txt
+!reports/local-run-note.txt
+reports/*.log
 prism.log

@@ -1,0 +1,14 @@
+Local environment note
+Date: 2026-06-01
+
+The Postman local environment is configured for `http://localhost:8000` as required by the lab template.
+This repository does not include a real IoT Ingestion service implementation listening on port 8000, so only the mock environment was executed for evidence.
+
+When the real service is available, run:
+
+  npm run test:local
+
+Expected behavior:
+- Functional requests should match the same OpenAPI contract.
+- Missing/invalid token tests should return 401 or 403.
+- Local-only response-time assertion should run only when `env=local`.

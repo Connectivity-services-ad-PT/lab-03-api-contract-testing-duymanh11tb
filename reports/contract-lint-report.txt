@@ -1,0 +1,9 @@
+Command: npm run lint:contracts
+Date: 2026-06-01
+
+Result:
+No results with a severity of 'error' found.
+
+Notes:
+- Added `info.contact` to both OpenAPI contracts so Spectral no longer reports the previous contact warnings.
+- Contracts checked: `contracts/ai-vision.openapi.yaml`, `contracts/iot-ingestion.openapi.yaml`.

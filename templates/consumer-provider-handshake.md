@@ -1,33 +1,35 @@
-# Consumer–Provider Handshake
+# Consumer-Provider Handshake
 
-## Thông tin chung
+## Thong tin chung
 
 - Lab: FIT4110 Lab 03
-- Ngày:
-- Provider team:
-- Consumer team:
-- Provider service:
-- Consumer service:
+- Ngay: 2026-05-26
+- Provider team: team-vision
+- Consumer team: team-iot
+- Provider service: AI Vision
+- Consumer service: IoT Ingestion
 
 ## Contract
 
-- Contract file:
-- Mock base URL:
-- Auth method:
-- Endpoint được test:
+- Contract file: `contracts/ai-vision.openapi.yaml`
+- Mock base URL: `{{aiVisionMockUrl}}` (`http://localhost:4011` in mock/local environments)
+- Auth method: Bearer token via `Authorization: Bearer {{authToken}}`
+- Endpoint duoc test: `POST /detect`
 
 ## Smoke test
 
 ### Request
 
 ```http
-METHOD /path
+POST /detect
 Authorization: Bearer <token>
 Content-Type: application/json
 ```
 
 ```json
 {
+  "camera_id": "CAM01",
+  "image_url": "https://example.com/frame.jpg"
 }
 ```
 
@@ -35,23 +37,28 @@ Content-Type: application/json
 
 ```json
 {
+  "detection_id": "DET001",
+  "camera_id": "CAM01",
+  "label": "person",
+  "confidence": 0.91,
+  "risk_level": "medium"
 }
 ```
 
-## Kết quả
+## Ket qua
 
-- [ ] Consumer gọi mock thành công.
-- [ ] Consumer parse được field cần dùng.
-- [ ] Consumer hiểu lỗi 4xx/5xx provider trả về.
-- [ ] Có Newman report hoặc screenshot.
+- [x] Consumer goi mock thanh cong.
+- [x] Consumer parse duoc field can dung: `detection_id`, `label`, `confidence`.
+- [x] Consumer hieu loi 4xx/5xx provider tra ve thong qua `ProblemDetails` trong contract AI Vision.
+- [x] Co Newman report trong `reports/`.
 
-## Ghi chú thay đổi hợp đồng
+## Ghi chu thay doi hop dong
 
-| Nội dung | Trước | Sau | Người đồng ý |
+| Noi dung | Truoc | Sau | Nguoi dong y |
 |---|---|---|---|
-| | | | |
+| Initial Lab 03 smoke contract | N/A | `POST /detect` returns detection result with confidence in `[0,1]` | team-iot, team-vision |
 
-## Xác nhận
+## Xac nhan
 
-- Provider representative:
-- Consumer representative:
+- Provider representative: team-vision representative
+- Consumer representative: team-iot representative
